@@ -1,5 +1,6 @@
 package com.vaytee.shapes.figures;
 
+import com.vaytee.shapes.InvalidFigurePropertiesException;
 import org.springframework.data.annotation.Id;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,8 @@ public class Square extends Figure {
 
 
     public Square(double side) {
+//        if(side <= 0)
+//            throw new InvalidFigurePropertiesException("");
         this.side = side;
     }
 
@@ -28,5 +31,12 @@ public class Square extends Figure {
     @Override
     public String getType() {
         return "_square";
+    }
+
+    @Override
+    public boolean isValid() {
+        if(side <= 0)
+            return false;
+        return true;
     }
 }

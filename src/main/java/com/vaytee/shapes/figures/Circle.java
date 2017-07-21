@@ -31,4 +31,11 @@ public class Circle extends Figure {
     public String getType() {
         return "_circle";
     }
+
+    @Override
+    public boolean isValid() {
+        if(radius <= 0)
+            return false;
+        return true;
+    }
 }

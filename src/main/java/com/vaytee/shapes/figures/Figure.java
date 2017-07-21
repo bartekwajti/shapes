@@ -31,4 +31,6 @@ public abstract class Figure {
     public abstract double area();
 
     public abstract String getType();
+
+    public abstract boolean isValid();
 }
