@@ -24,7 +24,7 @@ public class FiguresController {
     public ResponseEntity<Double> figureArea(@PathVariable String id){
         Figure figure = repository.findById(id);
 
-        return ResponseEntity.ok(figure.area());
+        return (figure != null) ?  ResponseEntity.ok(figure.area()) : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/area")
