@@ -23,7 +23,10 @@ public class FiguresController {
     @GetMapping("/{id}/area")
     public ResponseEntity<Double> figureArea(@PathVariable String id){
         Figure figure = repository.findById(id);
-
+        if(figure != null) {
+            figure.areaHitCounter++;
+            repository.save(figure);
+        }
         return (figure != null) ?  ResponseEntity.ok(figure.area()) : ResponseEntity.notFound().build();
     }
 

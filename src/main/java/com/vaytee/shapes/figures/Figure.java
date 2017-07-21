@@ -24,6 +24,9 @@ public abstract class Figure {
     @Setter
     @Id public String id;
 
+    @Getter
+    @Setter
+    public Integer areaHitCounter = 0;
 
     public abstract double area();
 
