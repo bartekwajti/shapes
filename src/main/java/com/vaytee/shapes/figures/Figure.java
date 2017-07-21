@@ -14,7 +14,8 @@ import org.springframework.data.rest.core.annotation.RestResource;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Circle.class, name = "_circle"),
-        @JsonSubTypes.Type(value = Square.class, name = "_square")
+        @JsonSubTypes.Type(value = Square.class, name = "_square"),
+        @JsonSubTypes.Type(value = Rectangle.class, name = "_rectangle")
 })
 @Document(collection="figures_collection")
 @RestResource(path="figures")
@@ -32,5 +33,5 @@ public abstract class Figure {
 
     public abstract String getType();
 
-    public abstract boolean isValid();
+    public abstract void isValid();
 }

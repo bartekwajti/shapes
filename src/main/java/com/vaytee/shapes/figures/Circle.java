@@ -1,5 +1,6 @@
 package com.vaytee.shapes.figures;
 
+import com.vaytee.shapes.InvalidFigurePropertiesException;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Persistent;
@@ -18,6 +19,7 @@ public class Circle extends Figure {
 
     public Circle(double radius) {
         this.radius = radius;
+        this.isValid();
     }
 
     public Circle() {};
@@ -33,9 +35,8 @@ public class Circle extends Figure {
     }
 
     @Override
-    public boolean isValid() {
+    public void isValid() {
         if(radius <= 0)
-            return false;
-        return true;
+            throw new InvalidFigurePropertiesException("Invalid properties for figure of type " + this.getType() );
     }
 }

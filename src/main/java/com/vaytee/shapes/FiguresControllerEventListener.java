@@ -12,8 +12,6 @@ public class FiguresControllerEventListener extends AbstractRepositoryEventListe
     @Override
     protected void onBeforeCreate(Figure entity) {
         super.onBeforeCreate(entity);
-        if(!entity.isValid()) {
-            throw new InvalidFigurePropertiesException("Invalid properties for figure of type " + entity.getType() );
-        }
+        entity.isValid();
     }
 }

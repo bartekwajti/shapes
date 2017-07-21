@@ -1,41 +1,43 @@
 package com.vaytee.shapes.figures;
 
 import com.vaytee.shapes.InvalidFigurePropertiesException;
-import org.springframework.data.annotation.Id;
 import lombok.Getter;
 import lombok.Setter;
+
 /**
- * Created by Admin on 2017-07-20.
+ * Created by Admin on 2017-07-21.
  */
-public class Square extends Figure {
+public class Rectangle extends Figure {
+    @Getter
+    @Setter
+    public double a;
 
     @Getter
     @Setter
-    public double side;
+    public double b;
 
 
-    public Square(double side) {
-//        if(side <= 0)
-//            throw new InvalidFigurePropertiesException("");
-        this.side = side;
+    public Rectangle() {};
+
+    public Rectangle(double a, double b) {
+        this.a = a;
+        this.b = b;
         this.isValid();
     }
 
-    public Square() {};
-
     @Override
     public double area() {
-        return side*side;
+        return a*b;
     }
 
     @Override
     public String getType() {
-        return "_square";
+        return "_rectangle";
     }
 
     @Override
     public void isValid() {
-        if(side <= 0)
+        if(a <= 0 || b <= 0)
             throw new InvalidFigurePropertiesException("Invalid properties for figure of type " + this.getType() );
     }
 }

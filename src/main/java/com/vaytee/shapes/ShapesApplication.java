@@ -2,6 +2,7 @@ package com.vaytee.shapes;
 
 import com.vaytee.shapes.figures.Circle;
 import com.vaytee.shapes.figures.Figure;
+import com.vaytee.shapes.figures.Rectangle;
 import com.vaytee.shapes.figures.Square;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,6 +27,8 @@ public class ShapesApplication implements CommandLineRunner {
 		repository.save(new Square(6));
 		repository.save(new Circle(4));
 		repository.save(new Circle(10));
+
+		repository.save(new Rectangle(5, 10));
 
 		System.out.println("Figures found with findAll():");
 		System.out.println("-------------------------------");
