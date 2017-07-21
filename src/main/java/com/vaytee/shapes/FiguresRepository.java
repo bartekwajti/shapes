@@ -11,6 +11,4 @@ import java.util.List;
  */
 public interface FiguresRepository extends MongoRepository<Figure, String> {
     Figure findById(@Param("id") String id);
-
-    //List<Figure> findByLastName(@Param("name") String name);
 }
