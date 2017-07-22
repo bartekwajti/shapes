@@ -8,7 +8,6 @@ import org.springframework.data.annotation.Persistent;
 /**
  * Created by Admin on 2017-07-21.
  */
-@Persistent
 public class Circle extends Figure {
 
     @Getter

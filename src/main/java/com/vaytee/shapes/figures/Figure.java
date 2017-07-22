@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.hateoas.Identifiable;
 
 /**
  * Created by Admin on 2017-07-20.
@@ -19,7 +20,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 })
 @Document(collection="figures_collection")
 @RestResource(path="figures")
-public abstract class Figure {
+public abstract class Figure implements Identifiable<String> {
 
     @Getter
     @Setter
@@ -34,4 +35,8 @@ public abstract class Figure {
     public abstract String getType();
 
     public abstract void isValid();
+
+    public String getId() {
+        return id;
+    }
 }

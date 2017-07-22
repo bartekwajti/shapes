@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.config.EnableEntityLinks;
 
+@EnableEntityLinks
 @SpringBootApplication
 public class ShapesApplication implements CommandLineRunner {
 
@@ -21,7 +24,7 @@ public class ShapesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		repository.deleteAll();
+		//repository.deleteAll();
 
 		repository.save(new Square(5));
 		repository.save(new Square(6));

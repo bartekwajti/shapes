@@ -2,6 +2,7 @@ package com.vaytee.shapes;
 
 import com.vaytee.shapes.figures.Figure;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by Admin on 2017-07-20.
  */
 @RestController
+@ExposesResourceFor(Figure.class)
 @RequestMapping("/figures")
 public class FiguresController {
 
