@@ -1,6 +1,8 @@
 package com.vaytee.shapes;
 
 import com.vaytee.shapes.figures.Figure;
+import com.vaytee.shapes.history.HistoryItem;
+import com.vaytee.shapes.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +24,23 @@ public class FiguresController {
     @Autowired
     private FiguresRepository repository;
 
+    @Autowired
+    private HistoryRepository historyRepository;
+
     @GetMapping("/{id}/area")
     public ResponseEntity<Double> figureArea(@PathVariable String id){
         Figure figure = repository.findById(id);
         if(figure != null) {
             figure.areaHitCounter++;
             repository.save(figure);
+
+            long timestamp = System.currentTimeMillis();
+            HistoryItem historyItem = new HistoryItem(timestamp, figure.getId(), figure.area() );
+            historyRepository.save(historyItem);
+            return ResponseEntity.ok(figure.area());
         }
-        return (figure != null) ?  ResponseEntity.ok(figure.area()) : ResponseEntity.notFound().build();
+        return ResponseEntity.notFound().build();
+
     }
 
     @GetMapping("/area")

@@ -14,7 +14,9 @@ import org.springframework.stereotype.Component;
 public class FigureRelProvider extends EvoInflectorRelProvider {
     @Override
     public String getCollectionResourceRelFor(Class<?> type) {
-        return super.getCollectionResourceRelFor(Figure.class);
+        if(Figure.class.isAssignableFrom(type))
+            return super.getCollectionResourceRelFor(Figure.class);
+        return super.getCollectionResourceRelFor(type);
     }
 
     @Override
@@ -24,6 +26,8 @@ public class FigureRelProvider extends EvoInflectorRelProvider {
 
     @Override
     public String getItemResourceRelFor(Class<?> type) {
-        return super.getItemResourceRelFor(Figure.class);
+        if(Figure.class.isAssignableFrom(type))
+            return super.getItemResourceRelFor(Figure.class);
+        return super.getItemResourceRelFor(type);
     }
 }

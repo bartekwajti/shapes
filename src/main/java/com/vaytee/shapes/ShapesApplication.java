@@ -4,6 +4,7 @@ import com.vaytee.shapes.figures.Circle;
 import com.vaytee.shapes.figures.Figure;
 import com.vaytee.shapes.figures.Rectangle;
 import com.vaytee.shapes.figures.Square;
+import com.vaytee.shapes.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,13 +19,18 @@ public class ShapesApplication implements CommandLineRunner {
 	@Autowired
 	private FiguresRepository repository;
 
+	@Autowired
+	HistoryRepository historyRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ShapesApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		//repository.deleteAll();
+		historyRepository.deleteAll();
+
+		repository.deleteAll();
 
 		repository.save(new Square(5));
 		repository.save(new Square(6));
