@@ -1,4 +1,4 @@
-package com.vaytee.shapes.figures;
+package com.vaytee.shapes.figures.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -12,31 +12,22 @@ import org.springframework.hateoas.Identifiable;
 /**
  * Created by Admin on 2017-07-20.
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Circle.class, name = "_circle"),
         @JsonSubTypes.Type(value = Square.class, name = "_square"),
         @JsonSubTypes.Type(value = Rectangle.class, name = "_rectangle")
 })
-@Document(collection="figures_collection")
-@RestResource(path="figures")
+@Document(collection = "figures_collection")
+@RestResource(path = "figures")
 public abstract class Figure implements Identifiable<String> {
 
     @Getter
     @Setter
-    @Id public String id;
-
-    @Getter
-    @Setter
-    public Integer areaHitCounter = 0;
+    @Id
+    private String id;
 
     public abstract double area();
 
     public abstract String getType();
-
-    public abstract void isValid();
-
-    public String getId() {
-        return id;
-    }
 }

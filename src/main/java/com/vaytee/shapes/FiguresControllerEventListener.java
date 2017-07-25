@@ -1,6 +1,6 @@
 package com.vaytee.shapes;
 
-import com.vaytee.shapes.figures.Figure;
+import com.vaytee.shapes.figures.model.Figure;
 import org.springframework.data.rest.core.event.AbstractRepositoryEventListener;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +12,6 @@ public class FiguresControllerEventListener extends AbstractRepositoryEventListe
     @Override
     protected void onBeforeCreate(Figure entity) {
         super.onBeforeCreate(entity);
-        entity.isValid();
+        //entity.isValid();
     }
 }

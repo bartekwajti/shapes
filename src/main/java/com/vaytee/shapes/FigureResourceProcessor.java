@@ -1,6 +1,6 @@
 package com.vaytee.shapes;
 
-import com.vaytee.shapes.figures.Figure;
+import com.vaytee.shapes.figures.model.Figure;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.*;

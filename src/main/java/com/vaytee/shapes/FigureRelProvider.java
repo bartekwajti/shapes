@@ -1,6 +1,6 @@
 package com.vaytee.shapes;
 
-import com.vaytee.shapes.figures.Figure;
+import com.vaytee.shapes.figures.model.Figure;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.hateoas.core.EvoInflectorRelProvider;

@@ -1,6 +1,6 @@
 package com.vaytee.shapes;
 
-import com.vaytee.shapes.figures.Figure;
+import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.history.HistoryItem;
 import com.vaytee.shapes.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,6 @@ public class FiguresController {
     public ResponseEntity<Double> figureArea(@PathVariable String id){
         Figure figure = repository.findById(id);
         if(figure != null) {
-            figure.areaHitCounter++;
-            repository.save(figure);
 
             long timestamp = System.currentTimeMillis();
             HistoryItem historyItem = new HistoryItem(timestamp, figure.getId(), figure.area() );

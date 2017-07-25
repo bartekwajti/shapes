@@ -1,15 +1,14 @@
 package com.vaytee.shapes;
 
-import com.vaytee.shapes.figures.Circle;
-import com.vaytee.shapes.figures.Figure;
-import com.vaytee.shapes.figures.Rectangle;
-import com.vaytee.shapes.figures.Square;
+import com.vaytee.shapes.figures.model.Circle;
+import com.vaytee.shapes.figures.model.Figure;
+import com.vaytee.shapes.figures.model.Rectangle;
+import com.vaytee.shapes.figures.model.Square;
 import com.vaytee.shapes.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.config.EnableEntityLinks;
 
 @EnableEntityLinks
@@ -37,7 +36,7 @@ public class ShapesApplication implements CommandLineRunner {
 		repository.save(new Circle(4));
 		repository.save(new Circle(10));
 
-		repository.save(new Rectangle(5, 10));
+		repository.save(new Rectangle(5d, 10d));
 
 		System.out.println("Figures found with findAll():");
 		System.out.println("-------------------------------");

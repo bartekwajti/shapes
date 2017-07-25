@@ -1,6 +1,6 @@
 package com.vaytee.shapes.history;
 
-import com.vaytee.shapes.figures.Figure;
+import com.vaytee.shapes.figures.model.Figure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.LinkBuilder;
