@@ -17,12 +17,12 @@ public class Square extends Figure {
     @NotNull
     private final Double side;
 
-    public Square(@JsonProperty("side") double side) {
+    public Square(@JsonProperty("side") Double side) {
         this.side = side;
     }
 
     @Override
-    public double area() {
+    public Double area() {
         return side * side;
     }
 

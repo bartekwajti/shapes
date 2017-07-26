@@ -1,4 +1,4 @@
-package com.vaytee.shapes;
+package com.vaytee.shapes.figures;
 
 import com.vaytee.shapes.figures.model.Figure;
 import org.springframework.data.mongodb.repository.MongoRepository;

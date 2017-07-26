@@ -1,5 +1,6 @@
 package com.vaytee.shapes;
 
+import com.vaytee.shapes.figures.FiguresRepository;
 import com.vaytee.shapes.figures.model.Circle;
 import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.figures.model.Rectangle;
@@ -31,10 +32,10 @@ public class ShapesApplication implements CommandLineRunner {
 
 		repository.deleteAll();
 
-		repository.save(new Square(5));
-		repository.save(new Square(6));
-		repository.save(new Circle(4));
-		repository.save(new Circle(10));
+		repository.save(new Square(5d));
+		repository.save(new Square(6d));
+		repository.save(new Circle(4d));
+		repository.save(new Circle(10d));
 
 		repository.save(new Rectangle(5d, 10d));
 

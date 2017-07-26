@@ -11,17 +11,17 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Admin on 2017-07-22.
  */
-@Component
-public class HistoryResourceProcessor implements ResourceProcessor<Resource<HistoryItem>> {
-
-    @Autowired
-    EntityLinks entityLinks;
-
-    @Override
-    public Resource<HistoryItem> process(Resource<HistoryItem> resource) {
-        HistoryItem historyItem = resource.getContent();
-        LinkBuilder linkForSingleResource = entityLinks.linkForSingleResource(Figure.class, historyItem.figureId);
-        resource.add(linkForSingleResource.withRel("figure"));
-        return resource;
-    }
-}
+//@Component
+//public class HistoryResourceProcessor implements ResourceProcessor<Resource<HistoryItem>> {
+//
+////    @Autowired
+////    EntityLinks entityLinks;
+////
+////    @Override
+////    public Resource<HistoryItem> process(Resource<HistoryItem> resource) {
+////        HistoryItem historyItem = resource.getContent();
+////        LinkBuilder linkForSingleResource = entityLinks.linkForSingleResource(Figure.class, historyItem.figureId);
+////        resource.add(linkForSingleResource.withRel("figure"));
+////        return resource;
+////    }
+//}

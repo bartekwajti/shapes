@@ -1,21 +1,29 @@
 package com.vaytee.shapes.history;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.rest.core.annotation.RestResource;
 
 /**
  * Created by Admin on 2017-07-22.
  */
-
+@Document
+@Getter
 public class HistoryItem {
 
-    @Id private String id;
-    public long timestamp;
-    public String figureId;
-    public double result;
+    @Id
+    private String id;
 
-    public HistoryItem(long timestamp, String figureId, double result) {
+    private final Long timestamp;
+    private final String figureId;
+    private final Double result;
+
+    @JsonCreator
+    public HistoryItem(@JsonProperty("timestamp") Long timestamp,
+                       @JsonProperty("figureId") String figureId,
+                       @JsonProperty("result") double result) {
         this.timestamp = timestamp;
         this.figureId = figureId;
         this.result = result;

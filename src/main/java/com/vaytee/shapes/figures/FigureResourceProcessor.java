@@ -1,4 +1,4 @@
-package com.vaytee.shapes;
+package com.vaytee.shapes.figures;
 
 import com.vaytee.shapes.figures.model.Figure;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class FigureResourceProcessor implements ResourceProcessor<Resource<Figure>> {
-    @Autowired EntityLinks entityLinks;
+    @Autowired
+    EntityLinks entityLinks;
 
     @Override
     public Resource<Figure> process(Resource<Figure> resource) {

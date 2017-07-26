@@ -18,12 +18,12 @@ public class Circle extends Figure {
     private final Double radius;
 
     @JsonCreator
-    public Circle(@JsonProperty("radius") double radius) {
+    public Circle(@JsonProperty("radius") Double radius) {
         this.radius = radius;
     }
 
     @Override
-    public double area() {
+    public Double area() {
         return Math.PI * radius * radius;
     }
 

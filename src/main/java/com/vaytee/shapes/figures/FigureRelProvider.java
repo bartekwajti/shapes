@@ -1,4 +1,4 @@
-package com.vaytee.shapes;
+package com.vaytee.shapes.figures;
 
 import com.vaytee.shapes.figures.model.Figure;
 import org.springframework.core.Ordered;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class FigureRelProvider extends EvoInflectorRelProvider {
     @Override
     public String getCollectionResourceRelFor(Class<?> type) {
-        if(Figure.class.isAssignableFrom(type))
+        if (Figure.class.isAssignableFrom(type))
             return super.getCollectionResourceRelFor(Figure.class);
         return super.getCollectionResourceRelFor(type);
     }
@@ -26,7 +26,7 @@ public class FigureRelProvider extends EvoInflectorRelProvider {
 
     @Override
     public String getItemResourceRelFor(Class<?> type) {
-        if(Figure.class.isAssignableFrom(type))
+        if (Figure.class.isAssignableFrom(type))
             return super.getItemResourceRelFor(Figure.class);
         return super.getItemResourceRelFor(type);
     }

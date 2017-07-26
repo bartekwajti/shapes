@@ -27,7 +27,11 @@ public abstract class Figure implements Identifiable<String> {
     @Id
     private String id;
 
-    public abstract double area();
+    public abstract Double area();
 
     public abstract String getType();
+
+    public String getAreaLink() {
+        return "http://localhost:8080/figures/" + getId() + "/area";
+    }
 }
