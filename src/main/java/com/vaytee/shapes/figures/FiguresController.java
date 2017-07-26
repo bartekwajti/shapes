@@ -1,13 +1,10 @@
 package com.vaytee.shapes.figures;
 
 import com.vaytee.shapes.figures.model.Figure;
-import com.vaytee.shapes.history.HistoryRepository;
 import com.vaytee.shapes.history.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +19,6 @@ import java.util.Optional;
  * Created by Admin on 2017-07-20.
  */
 @RestController
-@ExposesResourceFor(Figure.class)
 @RequestMapping("/figures")
 public class FiguresController {
 
@@ -40,7 +36,7 @@ public class FiguresController {
         if (figureOptional.isPresent()) {
             Figure figure = figureOptional.get();
             Double area = figure.area();
-            historyService.save(historyService.createFromFigure(figure)); /////////////////totrzeba zmienic
+            historyService.save(historyService.createHistoryItemFromFigure(figure));
             return ResponseEntity.ok(new Result(area));
         } else {
             return ResponseEntity.notFound().build();

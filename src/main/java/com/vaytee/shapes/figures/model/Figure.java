@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.rest.core.annotation.RestResource;
-import org.springframework.hateoas.Identifiable;
 
 /**
  * Created by Admin on 2017-07-20.
@@ -19,8 +17,7 @@ import org.springframework.hateoas.Identifiable;
         @JsonSubTypes.Type(value = Rectangle.class, name = "_rectangle")
 })
 @Document(collection = "figures_collection")
-@RestResource(path = "figures")
-public abstract class Figure implements Identifiable<String> {
+public abstract class Figure {
 
     @Getter
     @Setter

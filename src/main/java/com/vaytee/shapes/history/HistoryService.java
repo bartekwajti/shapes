@@ -17,7 +17,7 @@ public class HistoryService {
         historyRepository.save(historyItem);
     }
 
-    public HistoryItem createFromFigure(Figure figure) {
+    public HistoryItem createHistoryItemFromFigure(Figure figure) {
         HistoryItem historyItem = new HistoryItem(System.currentTimeMillis(),
                 figure.getId(), figure.area());
         return historyItem;
