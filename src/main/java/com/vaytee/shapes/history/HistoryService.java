@@ -7,6 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 /**
  * Created by Admin on 2017-07-26.
  */
@@ -21,7 +25,7 @@ public class HistoryService {
     }
 
     public HistoryItem createHistoryItemFromFigure(Figure figure) {
-        HistoryItem historyItem = new HistoryItem(System.currentTimeMillis(),
+        HistoryItem historyItem = new HistoryItem(LocalDateTime.now(),
                 figure.getId(), figure.area());
         return historyItem;
     }
@@ -30,4 +34,7 @@ public class HistoryService {
         return historyRepository.findAll(pageRequest);
     }
 
+    public void deleteAll() {
+        historyRepository.deleteAll();
+    }
 }

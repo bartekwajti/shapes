@@ -1,11 +1,13 @@
 package com.vaytee.shapes;
 
 import com.vaytee.shapes.figures.FiguresRepository;
+import com.vaytee.shapes.figures.FiguresService;
 import com.vaytee.shapes.figures.model.Circle;
 import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.figures.model.Rectangle;
 import com.vaytee.shapes.figures.model.Square;
 import com.vaytee.shapes.history.HistoryRepository;
+import com.vaytee.shapes.history.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,30 +20,30 @@ import javax.annotation.PostConstruct;
 public class InitService {
 
     @Autowired
-    private FiguresRepository repository;
+    HistoryService historyService;
 
     @Autowired
-    HistoryRepository historyRepository;
-
+    FiguresService figuresService;
 
     @PostConstruct
     public void init() {
-        historyRepository.deleteAll();
+        historyService.deleteAll();
 
-        repository.deleteAll();
+        figuresService.deleteAll();
 
-        repository.save(new Square(5d));
-        repository.save(new Square(6d));
-        repository.save(new Circle(4d));
-        repository.save(new Circle(10d));
+        figuresService.save(new Square(5d));
+        figuresService.save(new Square(6d));
+        figuresService.save(new Circle(4d));
+        figuresService.save(new Circle(10d));
 
-        repository.save(new Rectangle(5d, 10d));
+        figuresService.save(new Rectangle(5d, 10d));
+
+        historyService.save(
+                historyService.createHistoryItemFromFigure(figuresService.findAll().get(0)));
 
         System.out.println("Figures found with findAll():");
         System.out.println("-------------------------------");
-        for (Figure figure : repository.findAll()) {
-            System.out.println(figure);
-        }
+        figuresService.findAll().stream().forEach(f -> System.out.println(f));
         System.out.println();
     }
 }

@@ -33,4 +33,8 @@ public class FiguresService {
         return repository.findAll(pageRequest);
     }
 
+    public void deleteAll() {
+        repository.deleteAll();
+    }
+
 }
