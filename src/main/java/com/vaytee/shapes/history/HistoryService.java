@@ -1,7 +1,10 @@
 package com.vaytee.shapes.history;
 
 import com.vaytee.shapes.figures.model.Figure;
+import com.vaytee.shapes.history.model.HistoryItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,6 +24,10 @@ public class HistoryService {
         HistoryItem historyItem = new HistoryItem(System.currentTimeMillis(),
                 figure.getId(), figure.area());
         return historyItem;
+    }
+
+    public Page<HistoryItem> findAll(PageRequest pageRequest) {
+        return historyRepository.findAll(pageRequest);
     }
 
 }

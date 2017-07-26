@@ -1,4 +1,4 @@
-package com.vaytee.shapes.history;
+package com.vaytee.shapes.history.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

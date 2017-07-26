@@ -1,5 +1,6 @@
 package com.vaytee.shapes.history;
 
+import com.vaytee.shapes.history.model.HistoryItem;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
