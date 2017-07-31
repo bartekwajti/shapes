@@ -26,9 +26,4 @@ public class Circle extends Figure {
     public Double area() {
         return Math.PI * radius * radius;
     }
-
-    @Override
-    public String getType() {
-        return "_circle";
-    }
 }

@@ -22,7 +22,8 @@ public class Rectangle extends Figure {
     private final Double b;
 
     @JsonCreator
-    public Rectangle(@JsonProperty("a") Double a, @JsonProperty("b") Double b) {
+    public Rectangle(@JsonProperty("a") Double a,
+                     @JsonProperty("b") Double b) {
         this.a = a;
         this.b = b;
     }
@@ -30,10 +31,5 @@ public class Rectangle extends Figure {
     @Override
     public Double area() {
         return a * b;
-    }
-
-    @Override
-    public String getType() {
-        return "_rectangle";
     }
 }

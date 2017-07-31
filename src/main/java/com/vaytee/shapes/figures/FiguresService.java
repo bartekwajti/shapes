@@ -37,4 +37,15 @@ public class FiguresService {
         repository.deleteAll();
     }
 
+    public List<Figure> findAllByUser(String user) {
+        return repository.findAllByUser(user);
+    }
+
+    public Page<Figure> findAllByUser(String user, PageRequest pageRequest) {
+        return repository.findAllByUser(user, pageRequest);
+    }
+
+    public Optional<Figure> findByIdAndUser(String id, String user) {
+        return Optional.ofNullable(repository.findByIdAndUser(id, user));
+    }
 }

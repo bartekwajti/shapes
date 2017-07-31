@@ -1,4 +1,4 @@
-package com.vaytee.shapes.figures;
+package com.vaytee.shapes.figures.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Value;

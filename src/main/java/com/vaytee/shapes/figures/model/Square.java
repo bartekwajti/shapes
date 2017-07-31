@@ -18,6 +18,7 @@ public class Square extends Figure {
     private final Double side;
 
     public Square(@JsonProperty("side") Double side) {
+        super();
         this.side = side;
     }
 
@@ -25,10 +26,4 @@ public class Square extends Figure {
     public Double area() {
         return side * side;
     }
-
-    @Override
-    public String getType() {
-        return "_square";
-    }
-
 }

@@ -1,12 +1,10 @@
 package com.vaytee.shapes;
 
-import com.vaytee.shapes.figures.FiguresRepository;
 import com.vaytee.shapes.figures.FiguresService;
 import com.vaytee.shapes.figures.model.Circle;
 import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.figures.model.Rectangle;
 import com.vaytee.shapes.figures.model.Square;
-import com.vaytee.shapes.history.HistoryRepository;
 import com.vaytee.shapes.history.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +18,10 @@ import javax.annotation.PostConstruct;
 public class InitService {
 
     @Autowired
-    HistoryService historyService;
+    private HistoryService historyService;
 
     @Autowired
-    FiguresService figuresService;
+    private FiguresService figuresService;
 
     @PostConstruct
     public void init() {
@@ -37,6 +35,10 @@ public class InitService {
         figuresService.save(new Circle(10d));
 
         figuresService.save(new Rectangle(5d, 10d));
+
+        Figure rect = new Rectangle(5d, 20d);
+        rect.setUser("user2");
+        figuresService.save(rect);
 
         historyService.save(
                 historyService.createHistoryItemFromFigure(figuresService.findAll().get(0)));
