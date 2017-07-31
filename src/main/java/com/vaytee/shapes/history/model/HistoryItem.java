@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 /**
@@ -23,15 +24,19 @@ public class HistoryItem {
     private String id;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private final LocalDateTime timestamp;
+    @CreatedDate
+    private LocalDateTime timestamp;
+
+    @NotNull
+    @CreatedBy
+    private String user;
+
     private final String figureId;
     private final Double result;
 
     @JsonCreator
-    public HistoryItem(@JsonProperty("timestamp") LocalDateTime timestamp,
-                       @JsonProperty("figureId") String figureId,
+    public HistoryItem(@JsonProperty("figureId") String figureId,
                        @JsonProperty("result") double result) {
-        this.timestamp = timestamp;
         this.figureId = figureId;
         this.result = result;
     }

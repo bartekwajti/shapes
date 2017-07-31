@@ -7,10 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-
 /**
  * Created by Admin on 2017-07-26.
  */
@@ -25,13 +21,15 @@ public class HistoryService {
     }
 
     public HistoryItem createHistoryItemFromFigure(Figure figure) {
-        HistoryItem historyItem = new HistoryItem(LocalDateTime.now(),
-                figure.getId(), figure.area());
-        return historyItem;
+        return new HistoryItem(figure.getId(), figure.area());
     }
 
     public Page<HistoryItem> findAll(PageRequest pageRequest) {
         return historyRepository.findAll(pageRequest);
+    }
+
+    public Page<HistoryItem> findAllByUser(String user, PageRequest pageRequest) {
+        return historyRepository.findAllByUser(user, pageRequest);
     }
 
     public void deleteAll() {
