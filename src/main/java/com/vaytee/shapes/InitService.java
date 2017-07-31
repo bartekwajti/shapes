@@ -6,10 +6,19 @@ import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.figures.model.Rectangle;
 import com.vaytee.shapes.figures.model.Square;
 import com.vaytee.shapes.history.HistoryService;
+import com.vaytee.shapes.users.model.UserModel;
+import com.vaytee.shapes.users.UserModelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Admin on 2017-07-26.
@@ -23,8 +32,22 @@ public class InitService {
     @Autowired
     private FiguresService figuresService;
 
+    @Autowired
+    private UserModelService usersService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostConstruct
     public void init() {
+
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority("USER"));
+
+        usersService.deleteAll();
+        usersService.save(new UserModel("user", passwordEncoder.encode("pass"), authorities));
+        usersService.save(new UserModel("user2", passwordEncoder.encode("pass"), authorities));
+
         historyService.deleteAll();
 
         figuresService.deleteAll();
