@@ -21,7 +21,7 @@ public class UserModel {
 
     @Getter
     @Setter
-    @Indexed(unique=true)
+    @Indexed(unique = true)
     private String username;
 
     @Getter

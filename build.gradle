@@ -30,5 +30,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('io.rest-assured:rest-assured:3.0.3')
+    testCompile group: 'org.hamcrest', name: 'hamcrest-junit', version: '2.0.0.0'
     compile('org.springframework.boot:spring-boot-starter-security')
 }
