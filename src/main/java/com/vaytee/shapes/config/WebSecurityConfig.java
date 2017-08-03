@@ -1,4 +1,4 @@
-package com.vaytee.shapes;
+package com.vaytee.shapes.config;
 
 import com.vaytee.shapes.users.UsersService;
 import lombok.AllArgsConstructor;

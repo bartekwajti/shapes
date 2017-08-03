@@ -1,4 +1,4 @@
-package com.vaytee.shapes;
+package com.vaytee.shapes.security;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

@@ -1,6 +1,6 @@
 package com.vaytee.shapes.figures;
 
-import com.vaytee.shapes.AuthenticatedUser;
+import com.vaytee.shapes.security.AuthenticatedUser;
 import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.figures.model.Result;
 import com.vaytee.shapes.history.HistoryService;

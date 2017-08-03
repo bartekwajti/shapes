@@ -1,6 +1,6 @@
 package com.vaytee.shapes.history;
 
-import com.vaytee.shapes.AuthenticatedUser;
+import com.vaytee.shapes.security.AuthenticatedUser;
 import com.vaytee.shapes.history.model.HistoryRecord;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

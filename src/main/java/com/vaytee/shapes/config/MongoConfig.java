@@ -1,5 +1,6 @@
-package com.vaytee.shapes;
+package com.vaytee.shapes.config;
 
+import com.vaytee.shapes.security.SecurityAuditorAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
