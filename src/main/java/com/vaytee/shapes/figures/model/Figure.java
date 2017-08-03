@@ -2,17 +2,11 @@ package com.vaytee.shapes.figures.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.vaytee.shapes.domain.AbstractAuditingEntity;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import java.time.LocalDateTime;
 
 /**
  * Created by Admin on 2017-07-20.
@@ -26,17 +20,7 @@ import java.time.LocalDateTime;
 @Document(collection = "figures")
 @Getter
 @Setter
-public abstract class Figure {
-
-    @Id
-    private String id;
-
-    @CreatedBy
-    private String user;
-
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @CreatedDate
-    private LocalDateTime timestamp;
+public abstract class Figure extends AbstractAuditingEntity {
 
     public abstract Double area();
 
