@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Document
 @Getter
-public class UserModel {
+public class User {
 
     @Id
     private String id;
@@ -32,7 +32,7 @@ public class UserModel {
     @Setter
     List<GrantedAuthority> authorities;
 
-    public UserModel(String username, String password, List<GrantedAuthority> authorities) {
+    public User(String username, String password, List<GrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;

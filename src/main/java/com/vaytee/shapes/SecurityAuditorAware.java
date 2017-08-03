@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 /**
  * Created by Admin on 2017-07-30.
  */
-public class AuditorAwareImpl implements AuditorAware<String> {
+public class SecurityAuditorAware implements AuditorAware<String> {
 
     @Override
     public String getCurrentAuditor() {

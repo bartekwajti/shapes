@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Document
 @Getter
-public class HistoryItem {
+public class HistoryRecord {
 
     @Id
     private String id;
@@ -35,8 +35,8 @@ public class HistoryItem {
     private final Double result;
 
     @JsonCreator
-    public HistoryItem(@JsonProperty("figureId") String figureId,
-                       @JsonProperty("result") double result) {
+    public HistoryRecord(@JsonProperty("figureId") String figureId,
+                         @JsonProperty("result") double result) {
         this.figureId = figureId;
         this.result = result;
     }

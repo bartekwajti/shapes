@@ -4,6 +4,9 @@ import com.vaytee.shapes.AuthenticatedUser;
 import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.figures.model.Result;
 import com.vaytee.shapes.history.HistoryService;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,24 +16,26 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
+
+import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
 
 /**
  * Created by Admin on 2017-07-20.
  */
 @RestController
 @RequestMapping("/figures")
+@FieldDefaults(level = PRIVATE, makeFinal = true)
+@AllArgsConstructor(access = PACKAGE, onConstructor = @__(@Autowired))
 public class FiguresController {
 
+    @NonNull
+    FiguresService figuresService;
 
-    @Autowired
-    private FiguresService figuresService;
-
-    @Autowired
-    private HistoryService historyService;
+    @NonNull
+    HistoryService historyService;
 
     @GetMapping(value = "/{id}/area", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Result> figureArea(@AuthenticatedUser User user,
@@ -39,7 +44,7 @@ public class FiguresController {
         Optional<Figure> figureOptional = figuresService.findByIdAndUser(id, user.getUsername());
         if (figureOptional.isPresent()) {
             Figure figure = figureOptional.get();
-            historyService.save(historyService.createHistoryItemFromFigure(figure));
+            historyService.createAndSaveHistoryRecord(figure);
             Double area = figure.area();
             return ResponseEntity.ok(new Result(area));
         } else {
@@ -61,7 +66,6 @@ public class FiguresController {
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(name = "size", required = false, defaultValue = "20") Integer size) {
 
-        Map<String, Page<Figure>> map = new HashMap<>();
         PageRequest pageRequest = new PageRequest(page, size);
         Page<Figure> result = figuresService.findAllByUser(user.getUsername(), pageRequest);
         return ResponseEntity.ok(result);

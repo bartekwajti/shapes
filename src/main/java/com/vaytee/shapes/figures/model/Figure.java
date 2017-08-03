@@ -23,21 +23,18 @@ import java.time.LocalDateTime;
         @JsonSubTypes.Type(value = Square.class, name = "_square"),
         @JsonSubTypes.Type(value = Rectangle.class, name = "_rectangle")
 })
-@Document(collection = "figures_collection")
+@Document(collection = "figures")
+@Getter
+@Setter
 public abstract class Figure {
 
-    @Getter
-    @Setter
     @Id
     private String id;
 
-    @Getter//(onMethod = @__( @JsonIgnore ))
-    @Setter
     @CreatedBy
     private String user;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @Getter
     @CreatedDate
     private LocalDateTime timestamp;
 

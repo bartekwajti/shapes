@@ -6,8 +6,11 @@ import com.vaytee.shapes.figures.model.Figure;
 import com.vaytee.shapes.figures.model.Rectangle;
 import com.vaytee.shapes.figures.model.Square;
 import com.vaytee.shapes.history.HistoryService;
-import com.vaytee.shapes.users.UserModelService;
-import com.vaytee.shapes.users.model.UserModel;
+import com.vaytee.shapes.users.UsersService;
+import com.vaytee.shapes.users.model.User;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,23 +21,28 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
+
 /**
  * Created by Admin on 2017-07-26.
  */
 @Service
+@FieldDefaults(level = PRIVATE, makeFinal = true)
+@AllArgsConstructor(access = PACKAGE, onConstructor = @__(@Autowired))
 public class InitService {
 
-    @Autowired
-    private HistoryService historyService;
+    @NonNull
+    HistoryService historyService;
 
-    @Autowired
-    private FiguresService figuresService;
+    @NonNull
+    FiguresService figuresService;
 
-    @Autowired
-    private UserModelService usersService;
+    @NonNull
+    UsersService usersService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    @NonNull
+    PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() {
@@ -43,8 +51,8 @@ public class InitService {
         authorities.add(new SimpleGrantedAuthority("USER"));
 
         usersService.deleteAll();
-        usersService.save(new UserModel("user", passwordEncoder.encode("pass"), authorities));
-        usersService.save(new UserModel("user2", passwordEncoder.encode("pass"), authorities));
+        usersService.save(new User("user", passwordEncoder.encode("pass"), authorities));
+        usersService.save(new User("user2", passwordEncoder.encode("pass"), authorities));
 
         historyService.deleteAll();
 
@@ -61,8 +69,7 @@ public class InitService {
         rect.setUser("user2");
         figuresService.save(rect);
 
-        historyService.save(
-                historyService.createHistoryItemFromFigure(figuresService.findAll().get(0)));
+        historyService.createAndSaveHistoryRecord(figuresService.findAll().get(0));
 
         System.out.println("Figures found with findAll():");
         System.out.println("-------------------------------");

@@ -1,6 +1,9 @@
 package com.vaytee.shapes.figures;
 
 import com.vaytee.shapes.figures.model.Figure;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,13 +12,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
+
 /**
  * Created by Admin on 2017-07-25.
  */
 @Service
+@FieldDefaults(level = PRIVATE, makeFinal = true)
+@AllArgsConstructor(access = PACKAGE, onConstructor = @__(@Autowired))
 public class FiguresService {
-    @Autowired
-    private FiguresRepository repository;
+
+    @NonNull
+    FiguresRepository repository;
 
     public void save(Figure figure) {
         repository.save(figure);
