@@ -1,5 +1,6 @@
 package com.vaytee.shapes.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public abstract class AbstractAuditingEntity {
     private String id;
 
     @CreatedBy
+    @JsonIgnore
     private String user;
 
     @JsonSerialize(using = LocalDateTimeSerializer.class)
