@@ -28,4 +28,6 @@ public abstract class Figure extends AbstractAuditingEntity {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return "http://localhost:8080/figures/" + getId() + "/area";
     }
+
+    public abstract String getType();
 }

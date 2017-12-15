@@ -26,4 +26,9 @@ public class Square extends Figure {
     public Double area() {
         return side * side;
     }
+
+    @Override
+    public String getType() {
+        return "_square";
+    }
 }

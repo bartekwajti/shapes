@@ -32,4 +32,9 @@ public class Rectangle extends Figure {
     public Double area() {
         return a * b;
     }
+
+    @Override
+    public String getType() {
+        return "_rectangle";
+    }
 }
